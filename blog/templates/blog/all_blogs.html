@@ -1,0 +1,10 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}{% load static %}
+<a href = " {% url 'home' %}">Home</a>
+<h2>Pablo's {{ blogs.count }} blog{{ blogs.count | pluralize }}</h2>
+{% for blog in blogs %}
+    <a href = "{% url 'blog:detail' blog.id %}" ><h2>{{ blog.title }}</h3></a>
+    <h4>{{ blog.description|truncatechars:80 }}</h4>
+    <h5>{{ blog.date | date:' M d Y' }}</h5>
+{% endfor %}
+{% endblock %}
